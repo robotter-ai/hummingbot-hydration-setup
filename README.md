@@ -34,7 +34,7 @@ Inform the GATEWAY_PASSPHRASE previously defined when asked.
 The HB Gateway logs should appear and start normally.
 Also, from the HB Client, on the top right side it should appear that the HB Gateway is now online.
 
-### Run the Strategies
+### How to run strategies
 
 Once the configuration above is done you can run your preferred strategies.
 Please refer to the Hummingbot documentation on how to use and configure them.
