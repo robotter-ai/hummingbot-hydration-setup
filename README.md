@@ -22,7 +22,7 @@ gateway generate-certs
 
 Follow the instructions and define a strong password.
 
-# Create and configure the Hummingbot Gateway
+### Create and configure the Hummingbot Gateway
 
 In another terminal window, but inside of same repository do:
 
