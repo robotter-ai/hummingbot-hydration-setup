@@ -4,12 +4,7 @@ set -e
 function init() {
 	clear
 
-	echo "Initializing HDX setup..."
-	
-	echo
-	echo "Removing old containers and folder configurations"
-	docker rm -f $(docker ps -aq) || true
-	sudo rm -rf hdx || true
+	echo "Initializing Hydration + Hummingbot setup..."
 
 	# echo
 	# echo "Pulling latest docker images"
