@@ -41,7 +41,7 @@ Please refer to the Hummingbot documentation on how to use and configure them.
 Note that Hydration is a AMM (Automated Market Maker) connector, so only the strategies compatible with them can be run.
 
 https://hummingbot.org/docs/#ways-to-use-hummingbot
+
 https://hummingbot.org/v1-strategies/
+
 https://hummingbot.org/strategies/
-
-
