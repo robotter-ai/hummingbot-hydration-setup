@@ -1,0 +1,35 @@
+services:
+  hdx-client:
+    container_name: hdx-client
+    image: funttastic/hydration_client:latest
+    volumes:
+      - ./hdx/client/conf:/home/hummingbot/conf
+      - ./hdx/client/conf/connectors:/home/hummingbot/conf/connectors
+      - ./hdx/client/conf/strategies:/home/hummingbot/conf/strategies
+      - ./hdx/client/conf/controllers:/home/hummingbot/conf/controllers
+      - ./hdx/client/conf/scripts:/home/hummingbot/conf/scripts
+      - ./hdx/client/logs:/home/hummingbot/logs
+      - ./hdx/client/data:/home/hummingbot/data
+      - ./hdx/client/scripts:/home/hummingbot/scripts
+      - ./hdx/client/controllers:/home/hummingbot/controllers
+      - ./hdx/common/certs:/home/hummingbot/certs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    tty: true
+    stdin_open: true
+    network_mode: host
+  hdx-gateway:
+    container_name: "hdx-gateway"
+    image: funttastic/hydration_gateway:latest
+    ports:
+      - "15888:15888"
+      - "8080:8080"
+    volumes:
+      - ./hdx/gateway/conf:/home/gateway/conf
+      - ./hdx/gateway/logs:/home/gateway/logs
+      - ./hdx/common/certs:/home/gateway/certs
+    environment:
+      - GATEWAY_PASSPHRASE=${GATEWAY_PASSPHRASE}
