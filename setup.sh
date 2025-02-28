@@ -11,14 +11,14 @@ function init() {
 	# docker pull funttastic/hydration_client
 	# docker pull funttastic/hydration_gateway
 
-	# Define a temporary directory for cloning
-	echo
-	TEMP_DIR=$(mktemp -d)
-	echo "Cloning repository into a temporary folder: $TEMP_DIR"
-	git clone --branch feat/hydration --single-branch https://github.com/robotter-ai/hummingbot.git "$TEMP_DIR/hummingbot"
-
 	# Check if the hdx folder already exists in the current directory
 	if [ ! -d "hdx" ]; then
+		# Define a temporary directory for cloning
+		echo
+		TEMP_DIR=$(mktemp -d)
+		echo "Cloning repository into a temporary folder: $TEMP_DIR"
+		git clone --branch feat/hydration --single-branch https://github.com/robotter-ai/hummingbot.git "$TEMP_DIR/hummingbot"
+
 		echo
 		echo "Creating hdx folder structure..."
 
@@ -60,7 +60,7 @@ function init() {
 function create_hdx_client() {
 	echo
 	echo "Starting hdx-client container..."
-	docker compose up -d hdx-client
+	GATEWAY_PASSPHRASE="" docker compose up -d hdx-client
 }
 
 function create_hdx_gateway() {
