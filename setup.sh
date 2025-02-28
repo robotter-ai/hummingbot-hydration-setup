@@ -70,7 +70,7 @@ function create_hdx_gateway() {
 	echo "If you have already generated your GATEWAY_PASSPHRASE using the 'gateway generate-certs' command inside of the Hummingbot Client, enter it below:"
 	read -s -p "Enter your gateway passphrase: " gateway_passphrase
 	echo
-	GATEWAY_PASSPHRASE="$gateway_passphrase" docker-compose up -d hdx-gateway
+	GATEWAY_PASSPHRASE="$gateway_passphrase" docker compose up -d hdx-gateway
 	docker logs -f hdx-gateway
 }
 
