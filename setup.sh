@@ -17,7 +17,7 @@ function init() {
 		echo
 		TEMP_DIR=$(mktemp -d)
 		echo "Cloning repository into a temporary folder: $TEMP_DIR"
-		git clone --branch feat/hydration --single-branch https://github.com/robotter-ai/hummingbot.git "$TEMP_DIR/hummingbot"
+		git clone --depth 1 --branch feat/hydration --single-branch https://github.com/robotter-ai/hummingbot.git "$TEMP_DIR/hummingbot"
 
 		echo
 		echo "Creating hdx folder structure..."
