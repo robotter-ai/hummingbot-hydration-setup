@@ -1,18 +1,22 @@
 services:
-  hdx-client:
-    container_name: hdx-client
-    image: funttastic/hydration_client:latest
+  hummingbot:
+    container_name: hummingbot
+    image: robotterlabs/hummingbot:latest
+    entrypoint: ""
+    # entrypoint: /bin/bash
+    command: tail -f /dev/null
+    # command: /root/.local/share/pnpm/pnpm start
     volumes:
-      - ./hdx/client/conf:/home/hummingbot/conf
-      - ./hdx/client/conf/connectors:/home/hummingbot/conf/connectors
-      - ./hdx/client/conf/strategies:/home/hummingbot/conf/strategies
-      - ./hdx/client/conf/controllers:/home/hummingbot/conf/controllers
-      - ./hdx/client/conf/scripts:/home/hummingbot/conf/scripts
-      - ./hdx/client/logs:/home/hummingbot/logs
-      - ./hdx/client/data:/home/hummingbot/data
-      - ./hdx/client/scripts:/home/hummingbot/scripts
-      - ./hdx/client/controllers:/home/hummingbot/controllers
-      - ./hdx/common/certs:/home/hummingbot/certs
+      - ./volumes/client/conf:/home/hummingbot/conf
+      - ./volumes/client/conf/connectors:/home/hummingbot/conf/connectors
+      - ./volumes/client/conf/strategies:/home/hummingbot/conf/strategies
+      - ./volumes/client/conf/controllers:/home/hummingbot/conf/controllers
+      - ./volumes/client/conf/scripts:/home/hummingbot/conf/scripts
+      - ./volumes/client/logs:/home/hummingbot/logs
+      - ./volumes/client/data:/home/hummingbot/data
+      - ./volumes/client/scripts:/home/hummingbot/scripts
+      - ./volumes/client/controllers:/home/hummingbot/controllers
+      - ./volumes/common/certs:/home/hummingbot/certs
     logging:
       driver: "json-file"
       options:
@@ -20,16 +24,19 @@ services:
         max-file: "5"
     tty: true
     stdin_open: true
-    network_mode: host
-  hdx-gateway:
-    container_name: "hdx-gateway"
-    image: funttastic/hydration_gateway:latest
+  gateway:
+    container_name: gateway
+    image: robotterlabs/gateway:latest
+    entrypoint: ""
+    # entrypoint: /bin/bash
+    command: tail -f /dev/null
+    # command: /root/.local/share/pnpm/pnpm start
     ports:
       - "15888:15888"
       - "8080:8080"
     volumes:
-      - ./hdx/gateway/conf:/home/gateway/conf
-      - ./hdx/gateway/logs:/home/gateway/logs
-      - ./hdx/common/certs:/home/gateway/certs
+      - ./volumes/gateway/conf:/home/gateway/conf
+      - ./volumes/gateway/logs:/home/gateway/logs
+      - ./volumes/common/certs:/home/gateway/certs
     environment:
       - GATEWAY_PASSPHRASE=${GATEWAY_PASSPHRASE}
