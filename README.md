@@ -9,10 +9,10 @@ In any case, the flow to quickly start with the Hummingbot Client and Gateway pr
 ### Create and configure the Hummingbot Client
 
 ```sh
-git clone https://github.com/robotter-ai/hummingbot-hydration-setup.git
-cd hummingbot-hydration-setup
-./setup.sh hdx-client
-docker attach hdx-client
+git clone https://github.com/robotter-ai/hydration.git
+cd hydration
+./setup.sh hummingbot
+docker attach hummingbot
 ```
 
 After running the commands above the Hummingbot Client screen should appear, follow the instructions and configure a strong password for you.
@@ -30,7 +30,7 @@ Follow the instructions and define a strong password.
 In another terminal window, but inside of same repository do:
 
 ```sh
-./setup.sh hdx-gateway
+./setup.sh gateway
 ```
 
 Inform the GATEWAY_PASSPHRASE previously defined when asked.
