@@ -1,6 +1,9 @@
 # Hummingbot + Hydration
 A repository with scripts to easily setup Hummingbot to do market-making with Hydration (HDX).
 
+Although this repository is fully funcitonal, this is a temporary solution until the code gets merged by the Hummingbot Foundation.
+In any case, the flow to quickly start with the Hummingbot Client and Gateway presented here, can still be used with the latest versions of Hummingbot (changing the docker-compose.yml file).
+
 ## Instructions
 
 ### Create and configure the Hummingbot Client
