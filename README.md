@@ -1,4 +1,4 @@
-# Hummingbot + Hydration
+# Hummingbot + Hydration Quickstart
 A repository with scripts to easily setup Hummingbot to do market-making with Hydration (HDX).
 
 Although this repository is fully funcitonal, this is a temporary solution until the code gets merged by the Hummingbot Foundation.
