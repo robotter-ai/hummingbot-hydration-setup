@@ -4,8 +4,9 @@ services:
     image: robotterlabs/hummingbot:latest
     entrypoint: ""
     # entrypoint: /bin/bash
-    command: tail -f /dev/null
-    # command: /root/.local/share/pnpm/pnpm start
+    # command: tail -f /dev/null
+    command: sh -c "source ~/.bashrc && conda activate hummingbot && cd /root/hummingbot && ./start"
+    network_mode: host
     volumes:
       - ./volumes/client/conf:/root/hummingbot/conf
       - ./volumes/client/conf/connectors:/root/hummingbot/conf/connectors
@@ -29,8 +30,9 @@ services:
     image: robotterlabs/gateway:latest
     entrypoint: ""
     # entrypoint: /bin/bash
-    command: tail -f /dev/null
-    # command: /root/.local/share/pnpm/pnpm start
+    # command: tail -f /dev/null
+    command: bash -c "cd /root/gateway && pnpm run start"
+    network_mode: host
     ports:
       - "15888:15888"
       - "8080:8080"
