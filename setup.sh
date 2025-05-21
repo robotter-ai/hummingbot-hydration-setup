@@ -15,9 +15,13 @@ function init() {
 	if [ ! -d "volumes" ]; then
 		# Define a temporary directory for cloning
 		echo
-		TEMP_DIR=$(mktemp -d)
-		echo "Cloning repository into a temporary folder: $TEMP_DIR"
-		git clone --depth 1 --branch feat/hydration --single-branch https://github.com/robotter-ai/hummingbot.git "$TEMP_DIR/hummingbot"
+		HB_CLIENT_TEMP_DIR=$(mktemp -d)
+		echo "Cloning Hummingbot Client repository into a temporary folder: $HB_CLIENT_TEMP_DIR"
+		git clone --depth 1 --branch feat/hydration --single-branch https://github.com/robotter-ai/hummingbot.git "$HB_CLIENT_TEMP_DIR/hummingbot"
+
+		HB_GATEWAY_TEMP_DIR=$(mktemp -d)
+		echo "Cloning Gateway repository into a temporary folder: $HB_GATEWAY_TEMP_DIR"
+		git clone --depth 1 --branch feat/hydration --single-branch https://github.com/robotter-ai/gateway.git "$HB_GATEWAY_TEMP_DIR/gateway"
 
 		echo
 		echo "Creating volumes folder structure..."
@@ -40,11 +44,16 @@ function init() {
 		mkdir -p volumes/gateway/logs
 
 		echo
-		echo "Copying configuration folders from the cloned repository..."
+		echo "Copying configuration folders from the cloned Hummingbot Client repository..."
 		# Copy folders from the cloned repo to volumes/client
-		cp -r "$TEMP_DIR/hummingbot/conf" volumes/client/
-		cp -r "$TEMP_DIR/hummingbot/scripts" volumes/client/
-		cp -r "$TEMP_DIR/hummingbot/controllers" volumes/client/
+		cp -r "$HB_CLIENT_TEMP_DIR/hummingbot/conf" volumes/client/
+		cp -r "$HB_CLIENT_TEMP_DIR/hummingbot/scripts" volumes/client/
+		cp -r "$HB_CLIENT_TEMP_DIR/hummingbot/controllers" volumes/client/
+
+		echo
+		echo "Copying configuration folders from the cloned Gateway repository..."
+		# Copy folders from the cloned repo to volumes/gateway
+		cp -r "$HB_GATEWAY_TEMP_DIR/gateway/src/templates" volumes/gateway/conf
 
 		chmod -R 777 volumes
 
@@ -54,7 +63,8 @@ function init() {
 	fi
 
 	# Clean up the temporary directory
-	rm -rf "$TEMP_DIR"
+	rm -rf "$HB_CLIENT_TEMP_DIR"
+	rm -rf "$HB_GATEWAY_TEMP_DIR"
 }
 
 function create_hummingbot() {
