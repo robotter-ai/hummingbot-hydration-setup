@@ -27,7 +27,7 @@ services:
     container_name: gateway
     image: robotterlabs/gateway:latest
     entrypoint: ""
-    command: bash -i -c "cd /home/gateway && cp -R src/templates/* conf/ && pnpm run start"
+    command: bash -i -c "cd /home/gateway && pnpm run start"
     ports:
       - "15888:15888"
       - "8080:8080"
