@@ -22,7 +22,7 @@ services:
         max-file: "5"
     tty: true
     stdin_open: true
-    network_mode: "service:gateway"
+    network_mode: "host"
   gateway:
     container_name: gateway
     image: robotterlabs/gateway:latest
