@@ -4,7 +4,6 @@ services:
     image: robotterlabs/hummingbot:latest
     entrypoint: ""
     command: bash -i -c "conda activate hummingbot && cd /home/hummingbot && ./start"
-    network_mode: host
     volumes:
       - ./volumes/client/conf:/home/hummingbot/conf
       - ./volumes/client/conf/connectors:/home/hummingbot/conf/connectors
@@ -23,12 +22,12 @@ services:
         max-file: "5"
     tty: true
     stdin_open: true
+    network_mode: "service:gateway"
   gateway:
     container_name: gateway
     image: robotterlabs/gateway:latest
     entrypoint: ""
     command: bash -i -c "cd /home/gateway && cp -R src/templates/* conf/ && pnpm run start"
-    network_mode: host
     ports:
       - "15888:15888"
       - "8080:8080"
@@ -38,3 +37,5 @@ services:
       - ./volumes/common/certs:/home/gateway/certs
     environment:
       - GATEWAY_PASSPHRASE=${GATEWAY_PASSPHRASE}
+    tty: true
+    stdin_open: true
