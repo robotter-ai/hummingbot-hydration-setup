@@ -1,7 +1,7 @@
 services:
   hummingbot:
     container_name: hummingbot
-    image: ubuntu:latest
+    image: robotterlabs/hummingbot:latest
     entrypoint: ""
     command: bash -i -c "conda activate hummingbot && cd /home/hummingbot && ./start"
     network_mode: host
