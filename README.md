@@ -1,13 +1,13 @@
 # Hummingbot + Hydration Quickstart
-A repository with scripts to easily setup Hummingbot to do market-making with Hydration (HDX).
+A repository with scripts to easily set up Hummingbot to do market-making with Hydration (HDX).
 
-While this repository is fully functional, it serves as a product preview until the Hummingbot Foundation officially merges the code. In the meantime, the setup flow demonstrated here, using the Hummingbot Client and Gateway, remains compatible with the latest Hummingbot versions by updating the docker-compose.yml file accordingly
+While this repository is fully functional, it serves as a product preview until the Hummingbot Foundation officially merges the code. In the meantime, the setup flow demonstrated here, using the Hummingbot Client and Gateway, remains compatible with the latest Hummingbot versions by updating the docker-compose.yml file accordingly.
 
 ## Instructions
 
 ### Prerequisites
 
-- Docker (or Docker Destop)
+- Docker (or Docker Desktop)
 - Unix-like system (Linux, MacOS) or WSL (for Windows)
 
 ### Create and configure the Hummingbot Client
@@ -19,9 +19,9 @@ cd hydration
 docker attach hummingbot
 ```
 
-After running the commands above the Hummingbot Client screen should appear, follow the instructions and configure a strong password for you.
+After running the commands above, the Hummingbot Client screen should appear. Follow the instructions and configure a strong password for yourself.
 
-When the main screen (after the login) appear, generate the SSL certificates for the Hummingbot Client to securely communicate with the Hummingbot Gateway. This can be done with the following command there:
+When the main screen (after the login) appears, generate the SSL certificates for the Hummingbot Client to securely communicate with the Hummingbot Gateway. This can be done with the following command:
 
 ```sh
 gateway generate-certs
@@ -31,7 +31,7 @@ Follow the instructions and define a strong password.
 
 ### Create and configure the Hummingbot Gateway
 
-In another terminal window, but inside of same repository do:
+In another terminal window, but inside the same repository, do:
 
 ```sh
 ./setup.sh gateway
@@ -39,13 +39,13 @@ In another terminal window, but inside of same repository do:
 
 Inform the GATEWAY_PASSPHRASE previously defined when asked.
 The HB Gateway logs should appear and start normally.
-Also, from the HB Client, on the top right side it should appear that the HB Gateway is now online.
+Also, from the HB Client, on the top right side, it should appear that the HB Gateway is now online.
 
 ### How to run strategies
 
-Once the configuration above is done you can run your preferred strategies.
+Once the configuration above is done, you can run your preferred strategies.
 Please refer to the Hummingbot documentation on how to use and configure them.
-Note that Hydration is a AMM (Automated Market Maker) connector, so only the strategies compatible with them can be run.
+Note that Hydration is an AMM (Automated Market Maker) connector, so only the strategies compatible with them can be run.
 
 https://hummingbot.org/docs/#ways-to-use-hummingbot
 
