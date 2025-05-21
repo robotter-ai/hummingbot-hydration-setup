@@ -21,7 +21,7 @@ docker attach hummingbot
 
 After running the commands above the Hummingbot Client screen should appear, follow the instructions and configure a strong password for you.
 
-When the main screen (after the login) appear, generate the SSL certificates for the Hummingbot Clien to securely communicate with the Hummingbot Gateway. This can be done with the following command there:
+When the main screen (after the login) appear, generate the SSL certificates for the Hummingbot Client to securely communicate with the Hummingbot Gateway. This can be done with the following command there:
 
 ```sh
 gateway generate-certs
