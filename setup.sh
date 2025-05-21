@@ -6,10 +6,10 @@ function init() {
 
 	echo "Initializing Hydration + Hummingbot setup..."
 
-	# echo
-	# echo "Pulling latest docker images"
-	# docker pull funttastic/hummingbot:latest
-	# docker pull robotterlabs/gateway:latest
+	echo
+	echo "Pulling latest docker images"
+	docker pull robotterlabs/hummingbot:latest
+	docker pull robotterlabs/gateway:latest
 
 	# Check if the volumes folder already exists in the current directory
 	if [ ! -d "volumes" ]; then
