@@ -79,6 +79,14 @@ function create_hummingbot() {
 	GATEWAY_PASSPHRASE="" docker compose up -d hummingbot
 }
 
+function attach_to_hummingbot() {
+	docker attach hummingbot
+}
+
+function log_hummingbot() {
+	docker logs -f hummingbot
+}
+
 function create_gateway() {
 	echo
 	echo "Starting gateway container..."
@@ -87,6 +95,9 @@ function create_gateway() {
 	read -s -p "Enter your gateway passphrase: " gateway_passphrase
 	echo
 	GATEWAY_PASSPHRASE="$gateway_passphrase" docker compose up -d gateway
+}
+
+function log_gateway() {
 	docker logs -f gateway
 }
 
@@ -95,10 +106,12 @@ case "$1" in
 	hummingbot)
 		init
 		create_hummingbot
+		attach_to_hummingbot
 		;;
 	gateway)
 		init
 		create_gateway
+		log_gateway
 		;;
 	*)
 		echo "Usage: $0 {hummingbot|gateway}"

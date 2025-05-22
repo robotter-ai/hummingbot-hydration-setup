@@ -15,8 +15,8 @@ While this repository is fully functional, it serves as a product preview until 
 ```sh
 git clone https://github.com/robotter-ai/hydration.git
 cd hydration
-./setup.sh hummingbot
-docker attach hummingbot
+
+./setup hummingbot
 ```
 
 After running the commands above, the Hummingbot Client screen should appear. Follow the instructions and configure a strong password for yourself.
@@ -34,7 +34,7 @@ Follow the instructions and define a strong password.
 In another terminal window, but inside the same repository, do:
 
 ```sh
-./setup.sh gateway
+./setup gateway
 ```
 
 Inform the GATEWAY_PASSPHRASE previously defined when asked.
