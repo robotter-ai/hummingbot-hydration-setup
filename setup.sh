@@ -53,7 +53,7 @@ function init() {
 		echo
 		echo "Copying configuration folders from the cloned Gateway repository..."
 		# Copy folders from the cloned repo to volumes/gateway
-		cp -r "$HB_GATEWAY_TEMP_DIR/gateway/src/templates" volumes/gateway/conf
+		cp -r $HB_GATEWAY_TEMP_DIR/gateway/src/templates/* volumes/gateway/conf/
 
 		chmod -R 777 volumes
 
@@ -91,6 +91,7 @@ case "$1" in
 		create_hummingbot
 		;;
 	gateway)
+		init
 		create_gateway
 		;;
 	*)
