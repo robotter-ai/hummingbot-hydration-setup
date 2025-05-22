@@ -4,24 +4,29 @@ set -e
 function init() {
 	clear
 
-	echo "Initializing Hydration + Hummingbot setup..."
-
-	echo
-	echo "Pulling latest docker images"
-	docker pull robotterlabs/hummingbot:latest
-	docker pull robotterlabs/gateway:latest
-
 	# Check if the volumes folder already exists in the current directory
 	if [ ! -d "volumes" ]; then
+		echo "Initializing Hydration + Hummingbot setup"
+
+		echo
+		echo "Pulling latest docker images..."
+		docker pull robotterlabs/hummingbot:latest
+		docker pull robotterlabs/gateway:latest
+
 		# Define a temporary directory for cloning
+		echo
+
 		echo
 		HB_CLIENT_TEMP_DIR=$(mktemp -d)
 		echo "Cloning Hummingbot Client repository into a temporary folder: $HB_CLIENT_TEMP_DIR"
 		git clone --depth 1 --branch feat/hydration --single-branch https://github.com/robotter-ai/hummingbot.git "$HB_CLIENT_TEMP_DIR/hummingbot"
 
+		echo
 		HB_GATEWAY_TEMP_DIR=$(mktemp -d)
 		echo "Cloning Gateway repository into a temporary folder: $HB_GATEWAY_TEMP_DIR"
 		git clone --depth 1 --branch feat/hydration --single-branch https://github.com/robotter-ai/gateway.git "$HB_GATEWAY_TEMP_DIR/gateway"
+
+		echo
 
 		echo
 		echo "Creating volumes folder structure..."
@@ -57,6 +62,7 @@ function init() {
 
 		chmod -R 777 volumes
 
+		echo
 		echo "Folder structure and files copied."
 	else
 		echo "Folder 'volumes' already exists. Skipping repository copy."
